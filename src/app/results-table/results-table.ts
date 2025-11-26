@@ -9,9 +9,15 @@ import { BaseTable } from '../base-table/base-table';
 })
 export class ResultsTable extends BaseTable {
   public explanations: string[] = [];
+  public results: number[] = [];
 
   @Input()
   set explString(value: string) {
       this.explanations = value? value.split(',') : [];
+  }
+
+
+  public get roundedNumbers() : string[] {
+    return this.results.map(num => (Number.isInteger(num)? num : num.toFixed(3)).toString());
   }
 }

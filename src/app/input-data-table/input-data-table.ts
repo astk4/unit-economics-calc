@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 import { BaseTable } from '../base-table/base-table';
 
 @Component({
@@ -9,5 +9,13 @@ import { BaseTable } from '../base-table/base-table';
 })
 
 export class InputDataTable extends BaseTable {
+  
+  @ViewChildren("unit") private units!: QueryList<ElementRef>;
 
+  getNumberInputs() {
+    return this.units.map((er) => {
+      let flt = parseFloat(er.nativeElement.value);
+      return isNaN(flt)? 0 : flt;
+    }) 
+  }
 }
