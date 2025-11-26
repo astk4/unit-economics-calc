@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        @for (item of colTitles; track item) {
+            <th>{{item}}</th>
+        }
+    </tr>
+        <tr>
+        @for (expl of explanations; track expl) {
+            <td [innerHTML]="expl"></td>
+        }
+    </tr>
+    <tr>
+       @for (item of getColumsRange(); track item) {
+            <th>xxx</th>
+        } 
+    </tr>
+</table>

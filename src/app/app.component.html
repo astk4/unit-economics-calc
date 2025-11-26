@@ -1,0 +1,16 @@
+
+<app-input-data-table
+    titlesString="Marketing costs,Number of new<br/>customers,
+Total revenue,Average time<br/>of product use,
+Number of active<br/>(new) customers,
+Cost price"></app-input-data-table>
+<button (click)="onCalcRequested($event)">Calculate unit economy metrics</button>
+
+<app-results-table
+    titlesString="CAC,LTV,ARPU,Gross Margin,Payback Period,Unit Profit"
+    explString="How much does it cost<br/>to acquire 1 customer,
+Revenue from 1 customer<br/>for the entire period,
+Average revenue<br/>from 1 user,
+Profit share after<br/>production costs/<br/>services provided,
+Time for CAC<br/>to pay off,
+Net profit from<br/>1 customer"></app-results-table>

@@ -1,0 +1,17 @@
+table, th, td {
+  border:1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.4rem;
+}
+
+td {
+    text-align: center;
+}
+
+input {
+    font-size: large;
+    padding: 0.2rem;
+}
