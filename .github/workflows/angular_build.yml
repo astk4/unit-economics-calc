@@ -7,6 +7,12 @@ on:
     branches:
       - main
       - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,27 +27,19 @@ jobs:
         run: npm install
       - name: Build Angular Application
         run: npm run build --prod
-      - name: Upload App Files
-        uses: actions/upload-artifact@v7
+      - name: Upload static files to GitHub Pages
+        uses: actions/upload-pages-artifact@v5
         with:
-          name: app
           path: |
-            **/dist/unit-economy-calc/
-          if-no-files-found: error
+            **/dist/unit-economy-calc/browser/
+  
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: '${{ steps.deployment.outputs.page_url }}'
     steps:
-      - name: Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: app
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         id: deployment
