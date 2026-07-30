@@ -26,12 +26,13 @@ jobs:
       - name: Install Angular Dependencies
         run: npm install
       - name: Build Angular Application
-        run: npm run build --prod
+        run: npx ng build --configuration=production --base-href=/unit-economics-calc/
+      - name: Check build directory structure
+        run: ls -R dist/
       - name: Upload static files to GitHub Pages
         uses: actions/upload-pages-artifact@v5
         with:
-          path: |
-            **/dist/unit-economy-calc/browser/
+          path: './dist/unit-economy-calc/browser/'
   
   deploy:
     runs-on: ubuntu-latest
