@@ -1,0 +1,37 @@
+name: Angular Build
+
+on:
+  push:
+    branches:
+      - 'dev'
+  pull_request:
+    branches:
+      - 'main'
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+
+    - name: Setup Node
+      uses: actions/setup-node@v7
+      with:
+        node-version: "24"
+
+    - name: Install Angular Dependencies
+      run: npm install
+
+    - name: Build Angular Application
+      run: npm run build --prod
+
+    - name: Upload App Files
+      uses: actions/upload-artifact@v7
+      with:
+        name: app
+        path: |
+          **/dist/unit-economy-calc/
+        if-no-files-found: error
