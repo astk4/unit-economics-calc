@@ -35,6 +35,7 @@ jobs:
           path: './dist/unit-economy-calc/browser/'
   
   deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     needs: build
     environment:
